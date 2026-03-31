@@ -7,7 +7,7 @@
 
     <application
         android:allowBackup="true"
-        android:label="SalaryCalc"
+        android:label="工资计算器"
         android:icon="@mipmap/ic_launcher">
 
         <activity

@@ -11,17 +11,22 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Setup Gradle 8.4
+        run: |
+          curl -sL https://services.gradle.org/distributions/gradle-8.4-bin.zip -o /tmp/gradle-8.4-bin.zip
+          unzip -q /tmp/gradle-8.4-bin.zip -d /opt/gradle
+          echo "/opt/gradle/gradle-8.4/bin" >> $GITHUB_PATH
+
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: '17'
-          gradle-version: '8.4'
 
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
 
       - name: Build debug APK
-        run: gradle assembleDebug --no-daemon
+        run: gradle assembleDebug --no-daemon --stacktrace
 
       - name: Upload APK
         if: success()
