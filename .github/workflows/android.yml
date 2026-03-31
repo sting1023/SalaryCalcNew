@@ -20,9 +20,7 @@ jobs:
         uses: android-actions/setup-android@v3
 
       - name: Build debug APK
-        run: |
-          cd /tmp/SalaryCalcNew || cd .
-          bash gradlew assembleDebug --no-daemon 2>&1 | tail -10
+        run: bash gradlew assembleDebug --no-daemon
 
       - name: Upload APK
         if: success()
