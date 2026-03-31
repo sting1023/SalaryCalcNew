@@ -22,12 +22,12 @@ jobs:
       - name: Accept Android SDK licenses
         run: |
           yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses 2>/dev/null || true
-          $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "platforms;android-34" "build-tools;34.0.0" 2>&1 | tail -5
+          $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "platforms;android-34" "build-tools;34.0.0" 2>&1 | tail -3
 
       - name: Build debug APK
         run: |
           chmod +x gradlew
-          bash gradlew assembleDebug --no-daemon 2>&1 | tail -15
+          bash gradlew assembleDebug --no-daemon --stacktrace 2>&1
 
       - name: Upload APK
         if: success()
