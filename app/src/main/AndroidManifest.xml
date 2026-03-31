@@ -7,7 +7,7 @@
 
     <application
         android:allowBackup="true"
-        android:label="工资计算器"
+        android:label="工资计算器">
 
         <activity
             android:name=".MainActivity"
@@ -20,4 +20,3 @@
 
     </application>
 </manifest>
-
